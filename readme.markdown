@@ -230,7 +230,7 @@ Quando usados para iterar uma propriedade, o contexto é automáticamete definid
 }
 ```
 
-### Uso com Propriedades Iteráveis, Objeto Complexo
+### Uso com Propriedades Iteráveis, Array de Objeto
 ```json
 {
     "propriedadeIterável": {
