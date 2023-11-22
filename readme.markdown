@@ -1,112 +1,112 @@
 # Guia de Sintaxe da Linguagem WebQL v2
 
-Este guia oferece uma visão detalhada da sintaxe e da semântica da WebQL v2, uma linguagem de consulta poderosa, ideal para interagir com dados na web.
+Este guia oferece uma visï¿½o detalhada da sintaxe e da semï¿½ntica da WebQL v2, uma linguagem de consulta poderosa, ideal para interagir com dados na web.
 
-## Conteúdos
+## Conteï¿½dos
 
-[Introdução](#introduction) <br/>
+[Introduï¿½ï¿½o](#introduction) <br/>
 [Consulta Raiz](#query-root) <br/>
-[Paginação com Limit e Offset](#paging) <br/>
+[Paginaï¿½ï¿½o com Limit e Offset](#paging) <br/>
 [Filtragem com Where](#filtering) <br/>
-[Ordenação com Order](#ordering) <br/>
-[Contexto de Expressões](#expression-context) <br/>
+[Ordenaï¿½ï¿½o com Order](#ordering) <br/>
+[Contexto de Expressï¿½es](#expression-context) <br/>
 [Exemplos de Consulta](#examples) <br/>
 
-## Introdução <a name="introduction">
+## Introduï¿½ï¿½o <a name="introduction">
 
-WebQL v2 é uma linguagem de consulta robusta e versátil, projetada para facilitar a manipulação e o acesso a dados na web.
+WebQL v2 ï¿½ uma linguagem de consulta robusta e versï¿½til, projetada para facilitar a manipulaï¿½ï¿½o e o acesso a dados na web.
 
 ## Consulta Raiz <a name="query-root">
 
-A consulta raiz em WebQL v2 pode incluir propriedades especiais com funções definidas:
+A consulta raiz em WebQL v2 pode incluir propriedades especiais com funï¿½ï¿½es definidas:
 
-### Paginação com Limit e Offset <a name="paging">
+### Paginaï¿½ï¿½o com Limit e Offset <a name="paging">
 
-* limit: Define o número máximo de itens a serem retornados.
-* offset: Define a posição inicial para a consulta, usada em conjunto com limit.
+* limit: Define o nï¿½mero mï¿½ximo de itens a serem retornados.
+* offset: Define a posiï¿½ï¿½o inicial para a consulta, usada em conjunto com limit.
 
 ### Filtragem com Where <a name="filtering">
 
-* where: Define um escopo de filtragem, permitindo especificar condições detalhadas para os dados que deseja recuperar.
+* where: Define um escopo de filtragem, permitindo especificar condiï¿½ï¿½es detalhadas para os dados que deseja recuperar.
 
-### Ordenação com Order <a name="ordering">
+### Ordenaï¿½ï¿½o com Order <a name="ordering">
 
-* order: Especifica as propriedades pelas quais os dados devem ser ordenados, suportando múltiplas propriedades no estilo orderby seguido de thenby.
+* order: Especifica as propriedades pelas quais os dados devem ser ordenados, suportando mï¿½ltiplas propriedades no estilo orderby seguido de thenby.
 
-### Conceito de Contexto dentro de Expressões <a name="expression-context">
+### Conceito de Contexto dentro de Expressï¿½es <a name="expression-context">
 
-Em WebQL v2, o contexto dentro de expressões é um aspecto fundamental que define como as expressões são resolvidas e interpretadas. O contexto se refere ao tipo de dado ou à entidade sobre a qual a expressão opera.
+Em WebQL v2, o contexto dentro de expressï¿½es ï¿½ um aspecto fundamental que define como as expressï¿½es sï¿½o resolvidas e interpretadas. O contexto se refere ao tipo de dado ou ï¿½ entidade sobre a qual a expressï¿½o opera.
 
 #### Contexto Inicial: A Entidade Raiz
 
-O contexto inicial em qualquer consulta WebQL v2 é sempre o tipo da entidade raiz, ou typeof(T).
-Este contexto raiz define o escopo inicial de propriedades e métodos disponíveis para a expressão.
+O contexto inicial em qualquer consulta WebQL v2 ï¿½ sempre o tipo da entidade raiz, ou typeof(T).
+Este contexto raiz define o escopo inicial de propriedades e mï¿½todos disponï¿½veis para a expressï¿½o.
 
-#### Nichos de Contexto: Acesso a Membros e Operadores de Iteração
+#### Nichos de Contexto: Acesso a Membros e Operadores de Iteraï¿½ï¿½o
 
-À medida que as expressões acessam membros de um objeto ou entidade, o contexto se ajusta para refletir o tipo do membro acessado.
-Operações de acesso a membros mudam o contexto para o tipo da propriedade ou do membro específico.
+ï¿½ medida que as expressï¿½es acessam membros de um objeto ou entidade, o contexto se ajusta para refletir o tipo do membro acessado.
+Operaï¿½ï¿½es de acesso a membros mudam o contexto para o tipo da propriedade ou do membro especï¿½fico.
 
-#### Exemplo de Mudança de Contexto com Acesso a Membros
+#### Exemplo de Mudanï¿½a de Contexto com Acesso a Membros
 ```json
 {
     "propriedade": {
         "subPropriedade": {
-            /* O contexto aqui é o tipo de 'subPropriedade' */
+            /* O contexto aqui ï¿½ o tipo de 'subPropriedade' */
         }
     }
 }
 ```
 
-#### Contexto e Operadores de Iteração
+#### Contexto e Operadores de Iteraï¿½ï¿½o
 
-Operadores como $any e $all podem alterar o contexto quando usados para iterar sobre propriedades iteráveis (arrays, listas, coleções).
-Neste caso, o contexto se torna o tipo dos elementos da coleção.
+Operadores como $any e $all podem alterar o contexto quando usados para iterar sobre propriedades iterï¿½veis (arrays, listas, coleï¿½ï¿½es).
+Neste caso, o contexto se torna o tipo dos elementos da coleï¿½ï¿½o.
 
-#### Exemplo de Contexto com Operadores de Iteração
+#### Exemplo de Contexto com Operadores de Iteraï¿½ï¿½o
 ```json
 {
-    "coleção": {
+    "coleï¿½ï¿½o": {
         "$any": {
             "elemento": "valor"
-            /* O contexto aqui é o tipo dos elementos dentro de 'coleção' */
+            /* O contexto aqui ï¿½ o tipo dos elementos dentro de 'coleï¿½ï¿½o' */
         }
     }
 }
 ```
 
-#### Importância do Contexto
+#### Importï¿½ncia do Contexto
 
-Compreender o contexto é essencial para formular expressões válidas e significativas em WebQL v2.
-O contexto guia o usuário sobre quais propriedades e operações são possíveis em cada ponto da consulta.
+Compreender o contexto ï¿½ essencial para formular expressï¿½es vï¿½lidas e significativas em WebQL v2.
+O contexto guia o usuï¿½rio sobre quais propriedades e operaï¿½ï¿½es sï¿½o possï¿½veis em cada ponto da consulta.
 
 ## Exemplos de Consulta <a name="examples">
 
-A seguir, exemplos variados de consultas em WebQL v2 demonstram a flexibilidade e a potência da linguagem:
+A seguir, exemplos variados de consultas em WebQL v2 demonstram a flexibilidade e a potï¿½ncia da linguagem:
 
-### Exemplo 1: Paginação Simples
+### Exemplo 1: Paginaï¿½ï¿½o Simples
 ```json
 {
     "limit": 10,
     "offset": 20
 }
 ```
-Busca os próximos 10 itens, começando do item 21.
+Busca os prï¿½ximos 10 itens, comeï¿½ando do item 21.
 
-### Exemplo 2: Filtragem Avançada
+### Exemplo 2: Filtragem Avanï¿½ada
 ```json
 {
     "where": {
-        "categoria": "eletrônicos",
-        "preço": {
+        "categoria": "eletrï¿½nicos",
+        "preï¿½o": {
             "$greater": 100
         }
     }
 }
 ```
-Filtra itens na categoria 'eletrônicos' com preço maior que 100.
+Filtra itens na categoria 'eletrï¿½nicos' com preï¿½o maior que 100.
 
-### Exemplo 3: Ordenação Composta
+### Exemplo 3: Ordenaï¿½ï¿½o Composta
 ```json
 {
     "order": {
@@ -133,7 +133,7 @@ Ordena os dados primeiro por 'dataCriacao' em ordem decrescente, e depois por 'n
 ```
 Busca itens da marca 'XYZ' que sejam azuis e nos tamanhos 'M' ou 'G'.
 
-### Exemplo 5: Consulta Complexa com Paginação e Ordenação
+### Exemplo 5: Consulta Complexa com Paginaï¿½ï¿½o e Ordenaï¿½ï¿½o
 ```json
 {
     "limit": 5,
@@ -150,31 +150,31 @@ Busca itens da marca 'XYZ' que sejam azuis e nos tamanhos 'M' ou 'G'.
 }
 ```
 
-Busca os próximos 5 itens em estoque com avaliação maior ou igual a 4, começando do 11º item, ordenados por avaliação em ordem decrescente.
+Busca os prï¿½ximos 5 itens em estoque com avaliaï¿½ï¿½o maior ou igual a 4, comeï¿½ando do 11ï¿½ item, ordenados por avaliaï¿½ï¿½o em ordem decrescente.
 
 # Operadores em WebQL v2
 
-WebQL v2 oferece uma variedade de operadores que podem ser usados para construir expressões complexas em consultas. Aqui está um guia para entender como cada operador funciona:
+WebQL v2 oferece uma variedade de operadores que podem ser usados para construir expressï¿½es complexas em consultas. Aqui estï¿½ um guia para entender como cada operador funciona:
 
-## Operadores de Comparação Aritmética
+## Operadores de Comparaï¿½ï¿½o Aritmï¿½tica
 
-Estes operadores são usados com valores numéricos:
+Estes operadores sï¿½o usados com valores numï¿½ricos:
 
-* Lesser ($less): Menor que. 
-* LesserEqual ($lessEquals): Menor ou igual a. 
+* LessThan ($less): Menor que. 
+* LessOrEquals ($lessEquals): Menor ou igual a. 
 * Greater ($greater): Maior que. 
-* GreaterEqual ($greaterEquals): Maior ou igual a.
+* GreaterOrEquals ($greaterEquals): Maior ou igual a.
 
-## Operadores de Comparação de Igualdade
+## Operadores de Comparaï¿½ï¿½o de Igualdade
 
 Estes operadores podem ser usados com um valor ou uma lista de valores:
 
 * Equals ($equals): Igual a.
-* NotEquals ($notEquals): Não igual a.
+* NotEquals ($notEquals): Nï¿½o igual a.
 
 ### Uso com Arrays
 
-Quando usados com arrays, representam várias expressões ligadas por um "OR":
+Quando usados com arrays, representam vï¿½rias expressï¿½es ligadas por um "OR":
 
 ```json
 {
@@ -184,7 +184,7 @@ Quando usados com arrays, representam várias expressões ligadas por um "OR":
 }
 ```
 
-É possível omitir o operador $equals. Quando isso acontece a linguagem infere o uso do operador.
+ï¿½ possï¿½vel omitir o operador $equals. Quando isso acontece a linguagem infere o uso do operador.
 
 ```json
 {
@@ -195,30 +195,30 @@ Quando usados com arrays, representam várias expressões ligadas por um "OR":
 ## Operador Like
 
 Usado exclusivamente com strings:
-* Like ($like): Corresponde a um padrão de string.
+* Like ($like): Corresponde a um padrï¿½o de string.
 
 ### Uso com Arrays
 
-Pode ser usado para verificar múltiplos padrões:
+Pode ser usado para verificar mï¿½ltiplos padrï¿½es:
 
 ```json
 {
     "campo": {
-        "$like": ["padrão1", "padrão2"] 
+        "$like": ["padrï¿½o1", "padrï¿½o2"] 
     }
 }
 ```
 
-## Operadores Lógicos
+## Operadores Lï¿½gicos
 
-* Any ($any): Usado para iterar sobre uma propriedade iterável ou combinar múltiplos escopos de expressão com um "OR".
+* Any ($any): Usado para iterar sobre uma propriedade iterï¿½vel ou combinar mï¿½ltiplos escopos de expressï¿½o com um "OR".
 * All ($all): Semelhante ao $any, mas usado para combinar com um "AND".
 
-Repare que o 'right hand side' de uma expressão de operador '$or' ou '$and' só pode ser um escopo se o contexto for de uma propriedade iterável. Caso contrário apenas um array de escopos será aceito.
+Repare que o 'right hand side' de uma expressï¿½o de operador '$or' ou '$and' sï¿½ pode ser um escopo se o contexto for de uma propriedade iterï¿½vel. Caso contrï¿½rio apenas um array de escopos serï¿½ aceito.
 
-Quando usados para iterar uma propriedade, o contexto é automáticamete definido como o tipo contido dentro da coleção iterável.
+Quando usados para iterar uma propriedade, o contexto ï¿½ automï¿½ticamete definido como o tipo contido dentro da coleï¿½ï¿½o iterï¿½vel.
 
-### Uso com Propriedades Iteráveis, Array de Strings
+### Uso com Propriedades Iterï¿½veis, Array de Strings
 ```json
 {
     "listaDeStrings": {
@@ -230,10 +230,10 @@ Quando usados para iterar uma propriedade, o contexto é automáticamete definido 
 }
 ```
 
-### Uso com Propriedades Iteráveis, Objeto Complexo
+### Uso com Propriedades Iterï¿½veis, Objeto Complexo
 ```json
 {
-    "propriedadeIterável": {
+    "propriedadeIterï¿½vel": {
         "$any": {
             "subcampo": "valor"
         }
@@ -241,9 +241,9 @@ Quando usados para iterar uma propriedade, o contexto é automáticamete definido 
 }
 ```
 
-Os operadores lógicos '$or' e '$and' também podem ser usados em qualquer contexto, que não seja de uma propriedade iterável, para juntar conjuntos de escopo de expressões. Respectivamente usando 'OR' e 'AND' lógicos.
+Os operadores lï¿½gicos '$or' e '$and' tambï¿½m podem ser usados em qualquer contexto, que nï¿½o seja de uma propriedade iterï¿½vel, para juntar conjuntos de escopo de expressï¿½es. Respectivamente usando 'OR' e 'AND' lï¿½gicos.
 
-### Uso com Vários Escopos
+### Uso com Vï¿½rios Escopos
 
 Combina escopos com "OR" ($any) ou "AND" ($all):
 ```json
